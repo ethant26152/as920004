@@ -1,10 +1,8 @@
 #version 1
 #starting my quiz
-print("welcome to the football quiz")
+print("𝖜𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝖋𝖔𝖔𝖙𝖇𝖆𝖑𝖑 𝖖𝖚𝖎𝖟")
 # This is a mini quiz asking users what they like!
 #Variable and Constants
-
-
 import os # This is my module - for clearing text
 import time #This is for time
 import random
