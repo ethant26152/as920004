@@ -35,6 +35,7 @@ else:
 #This is my list of questions
         questions = [
             "1.who scored most goal in football history?"
+           " A/NS: RONAALDO"
             "2.who is the most ballon'dor winner?"
             "3.how many english manger has ever won the premier league?"
             "4.who is the bundesliga all-time top goal scorer?"
@@ -53,7 +54,7 @@ else:
         
         for q in questions:
             input(q)
-            print(random.choice(responses))
+            prinT(random.choice(responses))
            
 
 
