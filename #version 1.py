@@ -7,7 +7,7 @@ import os # This is my module - for clearing text
 import time #This is for time
 import random
 
-ADULTAGE = 18 #This is my constant - this sets my age for 'adult'
+ADULTAGE =  #This is my constant - this sets my age for 'adult'
 
 #Functions
 
@@ -17,7 +17,7 @@ def clearText():
 
 #Welcome text
 print("Hello! Welcome to this program where you answer questions and I judge you...")
-age = int(input("Hey how old are you... please enter your age!: "))
+3 = int(input("Hey how old are you... please enter your age!: "))
 
 #Age check
 if age > ADULTAGE:
