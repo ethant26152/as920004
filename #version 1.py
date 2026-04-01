@@ -1,64 +1,131 @@
-#version 1
-#starting my quiz
-print("𝖜𝖊𝖑𝖈𝖔𝖒𝖊 𝖙𝖔 𝖙𝖍𝖊 𝖋𝖔𝖔𝖙𝖇𝖆𝖑𝖑 𝖖𝖚𝖎𝖟")
-# This is a mini quiz asking users what they like!
-#Variable and Constants
-import os # This is my module - for clearing text
-import time #This is for time
-import random
+# Football Trivia Quiz (Buggy Version)
 
-ADULTAGE =  #This is my constant - this sets my age for 'adult'
+def displayInstructions():
+    print("\n⚽ Welcome to the Football Trivia Quiz! ⚽")
+    print("Answer all questions\n")
 
-#Functions
+def readyQuiz():
+    while True:
+        ready = input("Are you ready? (yes/no): ").lower().strip()
+       
+        if ready == "yes":
+            return True
+        elif ready == "no":
+            return    # ERROR: should be False (capital F)
+        else:
+            print("Invalid input")
 
-#Clearing the text
-def clearText():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
-#Welcome text
-print("Hello! Welcome to this program where you answer questions and I judge you...")
-3 = int(input("Hey how old are you... please enter your age!: "))
-
-#Age check
-if age > ADULTAGE:
-    print("You are way too old to be at High School... go home")
-    exit()
-else:
-    #Checking if the user is ready?
-    ready = input("Are you ready to play? ").lower()
-    if ready == "yes":
-        #Giving instructions
-        print("Perfect lets begin... \nThis game is easy... you just answer the questions with the options given \n Make sure you are spelling it correctly!")
-        time.sleep(1.5)
-        clearText()
-    
-#This is my list of questions
-        questions = [
-            "1.who scored most goal in football history?"
-           " A/NS: RONAALDO"
-            "2.who is the most ballon'dor winner?"
-            "3.how many english manger has ever won the premier league?"
-            "4.who is the bundesliga all-time top goal scorer?"
-            "5.which is the only club to have won all three of the champions league,europe league and connference league?"
-            "6.which country won the most world cup?"
-            "7.who won 2022 world cup?"
-            "8.who won the 2018 world cup"
-            "9.who won the champinons league in 2016,2017,2018?"
-            "10 how much world cup did brazil won?"
-
-            ]
-
-# This is my list of responses
-        responses = [
-            ]
+# Age input
+while True:
+    try:
+        age = input("Enter your age: ")   # ERROR: not converted to int
+       
+        if age < 11 or age > 18:          # ERROR: comparing string with int
+            print("valid age")
         
-        for q in questions:
-            input(q)
-            prinT(random.choice(responses))
-           
+        else:
+            break
+    except:
+        print("Error")
 
 
+displayInstructions()
+
+if not readyQuiz():
+    quit()
+
+
+quiz = {
+    1: {
+        "question": "Which country won the 2018 World Cup?",
+        "options": ["A. Germany", "B. France"],
+        "answer": "B"
+    }
+}
+
+score = 0
+
+for q_num, q_data in quiz.items():
+    print(q_data["question"])
+   
+    for option in q_data["options"]:
+        print(option)
+   
+    user_answer = input("Answer: ").upper()
+   
+    if user_answer == q_data["answer"]:
+        score = score + 1
     else:
-        print("Oh... goodbye then")
-        exit()
+        print("Wrong")
+   
+    print("Current score: " + score)   # ERROR: string + int
+
+print("Final Score:", score)  #This is the error one
+
+#This is the fixed one 
+# Football Trivia Quiz (Fixed Version)
+
+def displayInstructions():
+    print("\n⚽ Welcome to the Football Trivia Quiz! ⚽")
+    print("Answer all questions\n")
+
+
+def readyQuiz():
+    while True:
+        ready = input("Are you ready? (yes/no): ").lower().strip()
+       
+        if ready == "yes":
+            return True
+        elif ready == "no":
+            return False   # FIXED
+        else:
+            print("Invalid input")
+
+
+# Age input
+while True:
+    try:
+        age = int(input("Enter your age: "))   # FIXED
+       
+        if age < 11 or age > 18:
+            print("Invalid age")
+        else:
+            break
+    except ValueError:
+        print("Please enter a number")   # FIXED specific exception
+
+
+displayInstructions()
+
+if not readyQuiz():
+    quit()
+
+
+quiz = {
+    1: {
+        "question": "Which country won the 2018 World Cup?",
+        "options": ["A. Germany", "B. France"],
+        "answer": "B"
+    }
+}
+
+score = 0
+
+for q_num, q_data in quiz.items():
+    print(q_data["question"])
+   
+    for option in q_data["options"]:
+        print(option)
+   
+    user_answer = input("Answer: ").upper().strip()
+   
+    if user_answer == q_data["answer"]:
+        score += 1
+    else:
+        print("Wrong")
+   
+    print("Current score:", score)   # FIXED
+
+print("Final Score:", score)
 
